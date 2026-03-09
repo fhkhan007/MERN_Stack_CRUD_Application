@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import {useNavigate} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddUser = () => {
 
@@ -12,16 +14,16 @@ const AddUser = () => {
     const [user,setuser] = useState(users);
     const navigate = useNavigate();
 
-    const  inputhandler = (e) => {
+    const  inputHandler = (e) => {
         const {name,value} = e.target;
         setuser({...user, [name]: value})
     }
 
     const submitForm = async (e) => {
-        e.preventDefult();
+        e.preventDefault();
         await axios.post("http://localhost:8000/api/user", user)
         .then((response) => {
-            toast.success(response.data.massage, { position: "top-right"});
+            toast.success(response.data.message, { position: "top-right"});
             navigate("/")
         })
         .catch((error)=> {

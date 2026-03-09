@@ -32,8 +32,8 @@ const User = () => {
 
   return (
     <div className="userTable">
-      <Link to="/add" type="button" class="btn btn-primary">
-        Add User <i class="fa-solid fa-user-plus"></i>
+      <Link to="/add" type="button" className="btn btn-primary">
+        Add User <i className="fa-solid fa-user-plus"></i>
       </Link>
 
       <table className="table table-bordered">
@@ -49,7 +49,7 @@ const User = () => {
         <tbody>
           {users.map((user, index) => {
             return (
-              <tr>
+              <tr key={user._id}>
                 <td>{index + 1}</td>
                 <td>{user.name}</td>
                 <td>{user.email} </td>
@@ -60,15 +60,15 @@ const User = () => {
                     type="button"
                     class="btn btn-info"
                   >
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square"></i>
                   </Link>
 
                   <button
                     onClick={() => deleteUser(user._id)}
                     type="button"
-                    class="btn btn-danger"
+                    className="btn btn-danger"
                   >
-                    <i class="fa-solid fa-trash"></i>
+                    <i className="fa-solid fa-trash"></i>
                   </button>
                 </td>
               </tr>
